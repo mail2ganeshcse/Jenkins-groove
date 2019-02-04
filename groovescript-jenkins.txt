@@ -1,0 +1,41 @@
+pipeline {
+    agent {
+       label 'intel-102'
+    }
+    stages {
+	stage('Execution Starts') {
+		parallel {
+		stage("Lisitng the VM") {
+		    steps {
+			sh "virsh list --all"
+			}
+				}
+			stage("Connecting to ngic-dp1") {
+			steps { 
+			sh "ssh ngic-dp1 sh test.sh"
+			}
+				}
+				stage("Connecting to ngic-cp1") {
+					steps { sh "sleep 10"
+					sh "ssh ngic-cp1 sh test.sh"
+					}
+				}
+				stage("Connecting to c3po-hss1") {
+					steps { 
+					sh "ssh c3po-hss1 sh test.sh"
+					}
+				}
+				stage("Connecting to c3po-mme1") {
+					steps { 
+					sh "ssh c3po-mme1 sh test.sh"
+					}
+				}
+		        stage("Connecting to polaris") {
+					steps { 
+					sh "ssh polaris sh test.sh"
+					}
+				}
+		    }
+		}
+	}
+	}
