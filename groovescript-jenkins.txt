@@ -1,6 +1,6 @@
 pipeline {
     agent {
-       label 'intel-102'
+       label 'agent-name'
     }
     stages {
 	stage('Execution Starts') {
@@ -10,29 +10,29 @@ pipeline {
 			sh "virsh list --all"
 			}
 				}
-			stage("Connecting to ngic-dp1") {
+			stage("Connecting to Serverone") {
 			steps { 
-			sh "ssh ngic-dp1 sh test.sh"
+			sh "ssh xx.xx.xx.xx sh test.sh"
 			}
 				}
-				stage("Connecting to ngic-cp1") {
+				stage("Connecting to xx.xx.xx.xx") {
 					steps { sh "sleep 10"
-					sh "ssh ngic-cp1 sh test.sh"
+					sh "ssh xx.xx.xx.xx sh test.sh"
 					}
 				}
-				stage("Connecting to c3po-hss1") {
+				stage("Connecting to xx.xx.xx.xx") {
 					steps { 
-					sh "ssh c3po-hss1 sh test.sh"
+					sh "ssh xx.xx.xx.xx sh test.sh"
 					}
 				}
-				stage("Connecting to c3po-mme1") {
+				stage("Connecting to xx.xx.xx.xx") {
 					steps { 
-					sh "ssh c3po-mme1 sh test.sh"
+					sh "ssh xx.xx.xx.xx sh test.sh"
 					}
 				}
-		        stage("Connecting to polaris") {
+		        stage("Connecting to xx.xx.xx.xx") {
 					steps { 
-					sh "ssh polaris sh test.sh"
+					sh "ssh xx.xx.xx.xx sh test.sh"
 					}
 				}
 		    }
